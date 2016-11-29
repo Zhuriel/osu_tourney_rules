@@ -1,0 +1,198 @@
+\title{\name{} Rules}
+\author{Template by Zhuriel}
+\date{}
+
+\begin{document}
+\maketitle
+
+%This document is intended to provide an easily customizable, clearly worded rule set for osu! tournaments. It is based primarily on the OWC rules, but I have attempted to give the rules better structure and clarifiy the wordings.
+
+\section{Administrative}
+
+\name{} (\nameshort) is a \ifthenelse{\boolean{team}}{team}{player}-based \mode{} tournament hosted by \host. \ifthenelse{\boolean{team}}{It is played in teams of \teamsize}{}
+
+The tournament underlies the rules in this document, any changes of which will be announced.
+
+\subsection{Entry Restrictions}
+
+\ifthenelse{\boolean{national}}{\nameshort{} is a national tournament. Only players from \country, as indicated by the flag on their osu! profile, can participate.}{\nameshort{} is an international tournament.} \ifthenelse{\boolean{team} \AND \boolean{nationalteams} \AND \isundefined{\country}}{All players from a team must be from the same country, as indicated by the flag pm their osu! profile. \ifthenelse{\boolean{allowmixteams}}{If a country can not find enough players, they may form a mixed team with at most one other country.}{}}{}
+
+\ifthenelse{\boolean{team}}{Teams must have a minimum of \teamsizemin{} and a maximum of \teamsizemax{} players.}{}
+
+\ifthenelse{\NOT \isundefined{\minrank} \AND \NOT \isundefined{\maxrank}}{Players must be between rank \minrank{} and \maxrank{} at the time of registration to participate in this tournament.}{}
+\ifthenelse{\isundefined{\minrank} \AND \NOT \isundefined{\maxrank}}{Players must be above rank \minrank{} at the time of registration to participate in this tournament.}{}
+\ifthenelse{\isundefined{\minrank} \AND \NOT \isundefined{\maxrank}}{Players must be below rank \maxrank{} at the time of registration to participate in this tournament.}{}
+\ifthenelse{\isundefined{\minrank} \AND \isundefined{\maxrank}}{There are no rank restrictions for this tournament.}{A player whose rank changes significantly outside of the restrictions between the time of registration may be excluded from the tournament by the tournament management on a case-by-case basis.}
+
+The map selectors are not allowed to participate in the tournament as a player. Other staff members are not restricted from participating.
+
+\subsection{Registration}
+
+%%% a few examples, use what you need and adapt
+Registration is handled through the form linked on the \href{\thread}{tournament thread}.
+%To register, write a PM to (person) with the following template:
+%To register, respond to the tournament thread with the following template:
+
+The deadline for registrations is \regend.
+
+Any registrations after this date or by different means cannot be accepted.
+
+\subsection{Scheduling}
+
+The tournament runs from \tournamentstart{} to \tournamentend. All matches are played on weekends. The first two rounds are split into two groups for scheduling purposes and played over the first two weekends. For the later stages, all matches of one stage are played on the same weekend.
+
+Detailed schedules with times for the individual matches will be announced the week before the corresponding stage is played.
+
+Matches can be rescheduled if both players agree and a referee is available. Proof must be provided to the tournament management either in form of a screen shot or messages from both \ifthenelse{\boolean{team}}{teams}{players} at least 24h before the scheduled time of the match. If a \ifthenelse{\boolean{team}}{team}{player} does not respond to requests for rescheduling, the match may be rescheduled without the \ifthenelse{\boolean{team}}{team}{player}'s consent at the discretion of the tournament management.
+
+\section{Bracket}
+
+\ifthenelse{\boolean{groupstage}}{\subsection{Group Stage}
+The tournament starts with a group stage in which the \ifthenelse{\boolean{team}}{teams}{players} are divided into groups of \groupsize. Each \ifthenelse{\boolean{team}}{team}{player} plays against each other \ifthenelse{\boolean{team}}{team}{player} on the group. Matches in the group stage are played best-of-5, meaning the first \ifthenelse{\boolean{team}}{team}{player} to win 3 maps wins the match.
+
+\begin{samepage}
+At the end of the group stage, the top two \ifthenelse{\boolean{team}}{teams}{players} of each group advance. Ranking in the groups is determined by:
+\begin{enumerate}
+	\item Number of matches won
+	\item $\mathrm{Number ~ of ~maps ~ won} - \mathrm{Number ~ of ~maps ~ lost}$
+	\item Number of maps won
+	\item $\sum_\mathrm{Maps} \frac{\mathrm{Total~score~difference}}{\mathrm{Maximum~ total~ score}}$
+\end{enumerate}
+\end{samepage}
+If there is still a tie that prevents determining the top 2 \ifthenelse{\boolean{team}}{teams}{players}, another match between those \ifthenelse{\boolean{team}}{teams}{players} is played to resolve the tie.
+
+\subsection{Elimination Stages}
+
+After the group stage, the tournament continues in a}{The tournament is held in a}
+\ifthenelse{\boolean{doubleelim}}{double elimination format. This means that \ifthenelse{\boolean{team}}{teams}{players} who lose a match continue playing in the \emph{losers' bracket}, and only \ifthenelse{\boolean{team}}{teams}{players} losing a match in the losers' bracket are completely eliminated from the tournament.
+
+After both brackets have concluded, the winners of the two brackets compete in the grand finals. If the winner of the losers' bracket wins, another match is played, the winner of that match is the winner of the entire tournament. If the winning \ifthenelse{\boolean{team}}{team}{player} of the winner's bracket wins, that \ifthenelse{\boolean{team}}{team}{player} wins the tournament.}{single elimination format, meaning that any \ifthenelse{\boolean{team}}{team}{player} that loses a match is eliminated from the tournament.}
+
+\begin{samepage}
+Match lengths for each round are as follows:
+%copy this and fill in numbers
+\begin{itemize}
+	\item Matches in the round-of-n are played best-of-m, meaning the first \ifthenelse{\boolean{team}}{team}{player} to win (m+1)/2 maps wins the match.
+
+
+\end{itemize}
+\end{samepage}
+
+A detailed bracket including\ifthenelse{\boolean{groupstage}}{ group and}{} match assignments will be linked on the \href{\thread}{tournament thread}.
+
+\subsection{Map Pools}
+
+Each stage has it's own map pool. Each mappool consists of 6 nomod maps, 3 each of hidden, hard rock, double time and free mod maps, as well as one tiebreaker map.
+
+The map pools are selected by the map selectors and announced a week before the corresponding stage is played.
+
+%Additionally, each round will include a special map pool containing maps focusing on niche skills. The detailed rules for this pool are still under consideration and will be announced when they are finalized.
+
+\section{Match Rules}
+
+\subsection{Match Procedures}
+
+\subsubsection{Lobby Creation}
+The referee designated for the match creates the multiplayer lobby 15min before the scheduled starting time and invites the \ifthenelse{\boolean{team}}{captains, who in turn invite their team}{players}.
+
+\begin{samepage}
+The settings for the lobby are as follows:
+
+\input{content/lobbysettings.tex}
+\end{samepage}
+
+The referee keeps the host privileges of the lobby at all times except for selecting warmup maps.
+
+\subsubsection{Absent Players}
+If \ifthenelse{\boolean{team}}{not enough players are}{a player is not} present at the scheduled starting time of the match, it may be postponed a maximum of 10 minutes.
+\ifthenelse{\boolean{team} \AND \NOT \isundefined{\minplayers}}{The minimum numbers of players on each team required to proceed with the match is \minplayers.}{}
+If \ifthenelse{\boolean{team}}{not enough players are present}{a player is still absent} by that time, the match is considered a win by the \ifthenelse{\boolean{team}}{team which has enough players present}{present player}.
+If neither \ifthenelse{\boolean{team}}{team has enough players present}{player is present}, the winner of the match is decided at random.
+
+\subsubsection{Roll and Warmups}
+\label{sec:warmup}
+At the beginning of the match, each \ifthenelse{\boolean{team}}{team captain}{player} executes a \texttt{!roll} command. The \ifthenelse{\boolean{team}}{team}{player} with the higher result goes first in picking warmups, banning maps and picking maps. In case of a tie, the \texttt{!roll} is repeated by both \ifthenelse{\boolean{team}}{captains}{players} until a decision is reached.
+
+Each \ifthenelse{\boolean{team}}{team}{player} may choose one warmup map before the actual match. Warmup maps may not be longer than \maxwarmup{} and may not contain questionable or offensive material of any kind. The final decision regarding what is considered in breach of this rule lies with the tournament management.
+
+Any mods may be chosen on warmup picks, including the mods not allowed on free mod picks.
+
+If the match is behind schedule, the referee may decide to only allow one warmup or none at all to save time.
+
+\ifthenelse{\boolean{groupstage}}{
+\ifthenelse{\groupstagewarmups = 1}{In the group stage, only one warmup total is allowed, chosen by the winner of the \texttt{!roll}.}{}
+\ifthenelse{\groupstagewarmups = 0}{In the group stage, no warmup maps may be played.}{}}{}
+
+\subsubsection{Bans}
+After both warmups have been played, each \ifthenelse{\boolean{team}}{team}{player} must ban 2 maps, preventing them from being picked during the entire match.
+
+The \ifthenelse{\boolean{team}}{teams}{players} take turns banning maps, starting with the winner of the \texttt{!roll}. Bans are made by \ifthenelse{\boolean{team}}{the team captains by }{}announcing the map to be banned to the referee.
+%%% optional - fewer bans in group stages
+%In the group stage, only one ban per \ifthenelse{\boolean{team}}{team}{player} is allowed.
+
+\subsubsection{Map Picks}
+The \ifthenelse{\boolean{team}}{team captains}{players} take turns picking maps. Maps are picked by announcing the map to the referee. The following restrictions as to which maps may be picked apply:
+
+\begin{samepage}
+\begin{itemize}
+	\item Maps banned in the beginning of the match may not be picked for the entire length of the match
+	\item Any single map may only be picked once per match
+	\ifthenelse{\boolean{restrictsamemod}}{\item The same \ifthenelse{\boolean{team}}{team}{player} may not pick from the same mod pool twice in a row. The two \ifthenelse{\boolean{team}}{teams'}{players'} picks are independent of the other \ifthenelse{\boolean{team}}{team's}{player's} for this rule, meaning that if one \ifthenelse{\boolean{team}}{team}{player} picks from a mod pool, the other may immediately pick from the same pool. The nomod pool is exempt from this rule.}{}
+	\item The tiebreaker map can not be picked. It is picked by the referee in case of a tie at the last possible game.
+\end{itemize}
+\end{samepage}
+
+The mods are set by the referee according to the mod pool that the picked map is in. Free mods is enabled for maps in the free mod pool and the tiebreaker.
+
+Allowed mods for free mod and tiebreaker are hidden or hard rock, as well as both \ifthenelse{\boolean{team}}{or none }{}of these two.
+%%% optional alternate rule to only require picking player to pick a mod
+\ifthenelse{\boolean{team}}{At least 2 players per team}{
+Each player
+%The player who picked the map
+}must play with at least one mod on free mod picks. This requirement does not apply to the tiebreaker.
+
+\ifthenelse{\boolean{team}}{Players may be exchanged freely for each map pick}{}
+
+\subsection{Map Rules}
+
+Once started, the map must be played until the end.
+
+The winner of the map is determined by the scores submitted to the \texttt{/mp/} link. A player's score is counted if the player ends the map on a pass. This includes failing and then reviving.
+
+\ifthenelse{\boolean{team}}{If all players of a team are in a failed state at once, the map will end automatically and the failed team loses the map.}{If both players fail, the player with the higher score wins.}
+
+The referee stays in the lobby, but may not play the maps.
+
+\subsection{Lobby Behavior}
+
+Behavior during and between matches underlies the global osu! rules. If a player becomes unable to play multiplayer during a match due to a silence or restriction, \ifthenelse{\boolean{team}}{the team of that player must continue playing without them.}{that player forfeits the match.}
+
+\begin{samepage}
+Additionally, the following rules are enforced by referees:
+
+\begin{itemize}
+	\item No inappropriate warmup maps (see section \ref{sec:warmup})
+	\item No excessive delaying of the match
+	\item No intentional disconnects during maps
+\end{itemize}
+\end{samepage}
+
+Violations of these rules as well as any suspected foul play must immediately be reported to the tournament management and may be penalized by the referee with exclusion of the player from a single map or entire match. \ifthenelse{\NOT \boolean{team}}{Since this is a player-based tournament, this effectively means the player loses the map or match.}{If a team is unable to provide enough players for a map or match due to players being excluded for rule violations, the team loses the map or match.}
+
+In extreme cases, the tournament management may disqualify a player \ifthenelse{\boolean{team}}{or an entire team}{} for excessive disruptions and rule violations.
+
+\subsection{Rematches}
+
+In case a player disconnects during %the first 30 seconds of % OWC rule
+a map, the referee may allow a rematch subject to the following conditions:
+\begin{samepage}
+\begin{itemize}
+	\ifthenelse{\boolean{team}}{\item The disconnection caused the player's team to lose the map
+	\item The score difference between the teams is not bigger than the maximum score the disconnected player could have achieved}{}
+	\ifthenelse{\boolean{team}}{}{\item It would have been possible for the disconnected player to win, given the play up to the disconnect and assuming perfect play after.}
+	\item Each \ifthenelse{\boolean{team}}{team}{player} may have a maximum of one rematch in their favor per match
+\end{itemize}
+\end{samepage}
+
+
+\end{document}

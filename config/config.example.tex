@@ -1,0 +1,57 @@
+% Basic information
+\newcommand{\name}{Example Tournament} % name of the tournament
+\newcommand{\nameshort}{ET} % abbreviation (used in the lobby names)
+\newcommand{\mode}{osu!} % gamemode of the tournament
+\newcommand{\host}{you}
+\newcommand{\thread}{http://osu.ppy.sh}
+
+% Team information
+\newboolean{team} %if the tournament is team-based
+\setboolean{team}{true}
+\newcommand{\teamsize}{4}   %number of players per team
+\newcommand{\teamsizemin}{6}
+\newcommand{\teamsizemax}{8}
+\newcommand{\minplayers}{3} %minimum players for the match to proceed; comment to disable the rule
+
+% Dates
+\newcommand{\regend}{1970-01-01}          % end date of registration
+\newcommand{\tournamentstart}{1970-01-01} % start date - I use ISO format here
+\newcommand{\tournamentend}{1970-01-01}   % end date
+
+% Entry restrictions
+%\newcommand{\minrank}{1337} 	%higher rank = lower number 
+%\newcommand{\maxrank}{42} 	%comment/uncomment these to remove/add rank restrictions
+\newboolean{national}
+\setboolean{national}{false}
+\newcommand{\country}{country}		%the country/countries this tournament is limited to
+\newboolean{nationalteams}			
+\setboolean{nationalteams}{false}	%are teams limited to be of one country?
+\newboolean{allowmixteams}			
+\setboolean{allowmixteams}{false}	%allow 2-country teams
+
+% Bracket information
+\newboolean{groupstage}
+\setboolean{groupstage}{false}		%set true to enable group stage
+\newcommand{\groupsize}{4}
+\newboolean{doubleelim}
+\setboolean{doubleelim}{true}		%true for DE, false for SE
+
+%match related time windows
+\newcommand{\reschedulewindow}{24h}
+\newcommand{\lobbyopen}{5min}
+\newcommand{\maxlate}{10min}
+\newcommand{\picktime}{2min}
+\newcommand{\readytime}{1min}
+
+%warmup restrictions
+\newcommand{\maxwarmup}{5min}
+\newcommand{\groupstagewarmups}{2}
+\newboolean{stricthost}
+\setboolean{stricthost}{true}
+
+%ban & picking restrictions
+\newcommand{\bans}{2}
+\newcommand{\groupstagebans}{2}
+\newboolean{restrictsamemod}
+\setboolean{restrictsamemod}{false} %if true, the same team may not pick the same mod twice on consecutive picks
+

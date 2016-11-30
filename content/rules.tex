@@ -48,7 +48,7 @@ Matches can be rescheduled if both players agree and a referee is available. Pro
 \section{Bracket}
 
 \ifthenelse{\boolean{groupstage}}{\subsection{Group Stage}
-The tournament starts with a group stage in which the \ifthenelse{\boolean{team}}{teams}{players} are divided into groups of \groupsize. Each \ifthenelse{\boolean{team}}{team}{player} plays against each other \ifthenelse{\boolean{team}}{team}{player} on the group. Matches in the group stage are played best-of-5, meaning the first \ifthenelse{\boolean{team}}{team}{player} to win 3 maps wins the match.
+The tournament starts with a group stage in which the \ifthenelse{\boolean{team}}{teams}{players} are divided into groups of \groupsize. Each \ifthenelse{\boolean{team}}{team}{player} plays against each other \ifthenelse{\boolean{team}}{team}{player} on the group. Matches in the group stage are played best-of-5, meaning the first \ifthenelse{\boolean{team}}{team}{player} to win three maps wins the match.
 
 \begin{samepage}
 At the end of the group stage, the top two \ifthenelse{\boolean{team}}{teams}{players} of each group advance. Ranking in the groups is determined by:
@@ -59,7 +59,7 @@ At the end of the group stage, the top two \ifthenelse{\boolean{team}}{teams}{pl
 	\item $\sum_\mathrm{Maps} \frac{\mathrm{Total~score~difference}}{\mathrm{Maximum~ total~ score}}$
 \end{enumerate}
 \end{samepage}
-If there is still a tie that prevents determining the top 2 \ifthenelse{\boolean{team}}{teams}{players}, another match between those \ifthenelse{\boolean{team}}{teams}{players} is played to resolve the tie.
+If there is still a tie that prevents determining the top two \ifthenelse{\boolean{team}}{teams}{players}, another match between those \ifthenelse{\boolean{team}}{teams}{players} is played to resolve the tie.
 
 \subsection{Elimination Stages}
 
@@ -70,21 +70,17 @@ After both brackets have concluded, the winners of the two brackets compete in t
 
 \begin{samepage}
 Match lengths for each round are as follows:
-%copy this and fill in numbers
-\begin{itemize}
-	\item Matches in the round-of-n are played best-of-m, meaning the first \ifthenelse{\boolean{team}}{team}{player} to win (m+1)/2 maps wins the match.
-
-
-\end{itemize}
+\matchlengths
 \end{samepage}
 
 A detailed bracket including\ifthenelse{\boolean{groupstage}}{ group and}{} match assignments will be linked on the \href{\thread}{tournament thread}.
 
 \subsection{Map Pools}
 
-Each stage has it's own map pool. Each mappool consists of 6 nomod maps, 3 each of hidden, hard rock, double time and free mod maps, as well as one tiebreaker map.
+Each stage has its own map pool. Each mappool consists of \numnomod nomod maps, 3 each of hidden, hard rock, double time and free mod maps, as well as one tiebreaker map.
 
-The map pools are selected by the map selectors and announced a week before the corresponding stage is played.
+
+The map pools are selected by the map selectors and announced a week before the corresponding stage is played, after the last regular scheduled match of the previous round is played.
 
 %Additionally, each round will include a special map pool containing maps focusing on niche skills. The detailed rules for this pool are still under consideration and will be announced when they are finalized.
 
@@ -93,7 +89,7 @@ The map pools are selected by the map selectors and announced a week before the 
 \subsection{Match Procedures}
 
 \subsubsection{Lobby Creation}
-The referee designated for the match creates the multiplayer lobby 15min before the scheduled starting time and invites the \ifthenelse{\boolean{team}}{captains, who in turn invite their team}{players}.
+The referee designated for the match creates the multiplayer lobby \lobbyopen{} before the scheduled starting time and invites the \ifthenelse{\boolean{team}}{captains, who in turn invite their team}{players}.
 
 \begin{samepage}
 The settings for the lobby are as follows:
@@ -101,10 +97,10 @@ The settings for the lobby are as follows:
 \input{content/lobbysettings.tex}
 \end{samepage}
 
-The referee keeps the host privileges of the lobby at all times except for selecting warmup maps.
+The referee keeps the host privileges of the lobby at all times\ifthenelse{\boolean{stricthost}}{}{ except for selecting warmup maps}.
 
 \subsubsection{Absent Players}
-If \ifthenelse{\boolean{team}}{not enough players are}{a player is not} present at the scheduled starting time of the match, it may be postponed a maximum of 10 minutes.
+If \ifthenelse{\boolean{team}}{not enough players are}{a player is not} present at the scheduled starting time of the match, it may be postponed a maximum of \maxlate.
 \ifthenelse{\boolean{team} \AND \NOT \isundefined{\minplayers}}{The minimum numbers of players on each team required to proceed with the match is \minplayers.}{}
 If \ifthenelse{\boolean{team}}{not enough players are present}{a player is still absent} by that time, the match is considered a win by the \ifthenelse{\boolean{team}}{team which has enough players present}{present player}.
 If neither \ifthenelse{\boolean{team}}{team has enough players present}{player is present}, the winner of the match is decided at random.
@@ -113,7 +109,7 @@ If neither \ifthenelse{\boolean{team}}{team has enough players present}{player i
 \label{sec:warmup}
 At the beginning of the match, each \ifthenelse{\boolean{team}}{team captain}{player} executes a \texttt{!roll} command. The \ifthenelse{\boolean{team}}{team}{player} with the higher result goes first in picking warmups, banning maps and picking maps. In case of a tie, the \texttt{!roll} is repeated by both \ifthenelse{\boolean{team}}{captains}{players} until a decision is reached.
 
-Each \ifthenelse{\boolean{team}}{team}{player} may choose one warmup map before the actual match. Warmup maps may not be longer than \maxwarmup{} and may not contain questionable or offensive material of any kind. The final decision regarding what is considered in breach of this rule lies with the tournament management.
+Each \ifthenelse{\boolean{team}}{team}{player} may choose one warmup map before the actual match, in the order determined by the \texttt{!roll}. \ifthenelse{\boolean{stricthost}}{The chosen warmup map must be linked to the referee before the match.}{} Warmup maps may not be longer than \maxwarmup{} and may not contain questionable or offensive material of any kind. The final decision regarding what is considered in breach of this rule lies with the tournament management.
 
 Any mods may be chosen on warmup picks, including the mods not allowed on free mod picks.
 
@@ -151,7 +147,7 @@ Each player
 %The player who picked the map
 }must play with at least one mod on free mod picks. This requirement does not apply to the tiebreaker.
 
-\ifthenelse{\boolean{team}}{Players may be exchanged freely for each map pick}{}
+\ifthenelse{\boolean{team}}{Players may be exchanged freely for each map pick.}{}
 
 \subsection{Map Rules}
 

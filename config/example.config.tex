@@ -4,6 +4,7 @@
 \newcommand{\mode}{osu!} % gamemode of the tournament
 \newcommand{\host}{you}
 \newcommand{\thread}{http://osu.ppy.sh}
+\newcommand{\wincondition}{Score v1}
 
 % Team information
 \newboolean{team} %if the tournament is team-based
@@ -19,14 +20,14 @@
 \newcommand{\tournamentend}{1970-01-01}   % end date
 
 % Entry restrictions
-%\newcommand{\minrank}{1337} 	%higher rank = lower number 
+%\newcommand{\minrank}{1337} 	%higher rank = lower number
 %\newcommand{\maxrank}{42} 	%comment/uncomment these to remove/add rank restrictions
 \newboolean{national}
 \setboolean{national}{false}
 \newcommand{\country}{country}		%the country/countries this tournament is limited to
-\newboolean{nationalteams}			
+\newboolean{nationalteams}
 \setboolean{nationalteams}{false}	%are teams limited to be of one country?
-\newboolean{allowmixteams}			
+\newboolean{allowmixteams}
 \setboolean{allowmixteams}{false}	%allow 2-country teams
 
 % Bracket information
@@ -35,6 +36,11 @@
 \newcommand{\groupsize}{4}
 \newboolean{doubleelim}
 \setboolean{doubleelim}{true}		%true for DE, false for SE
+
+%map pool info
+\newcommand{\numnomod}{6}
+\newcommand{\nummod}{3}
+%\newcommand{\numfreemod}{3}
 
 %match related time windows
 \newcommand{\reschedulewindow}{24h}
@@ -55,3 +61,10 @@
 \newboolean{restrictsamemod}
 \setboolean{restrictsamemod}{false} %if true, the same team may not pick the same mod twice on consecutive picks
 
+%match lengths; copy the \item line and adjust numbers for what you need
+\newcommand{\matchlengths}{
+\begin{itemize}
+	\item Matches in the round-of-n are played best-of-m, meaning the first \ifthenelse{\boolean{team}}{team}{player} to win (m+1)/2 maps wins the match.
+
+\end{itemize}
+}

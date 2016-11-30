@@ -1,73 +1,81 @@
-% Basic information
-\newcommand{\name}{Example Tournament} % name of the tournament
-\newcommand{\nameshort}{ET} % abbreviation (used in the lobby names)
-\newcommand{\mode}{osu!} % gamemode of the tournament
-\newcommand{\host}{you}
-\newcommand{\thread}{http://osu.ppy.sh}
+%%% Basic information
+\newcommand{\name}{Example Tournament}    % name of the tournament
+\newcommand{\nameshort}{ET}               % abbreviation (used in the lobby names)
+\newcommand{\mode}{osu!}                  % gamemode of the tournament
+\newcommand{\host}{Example Host}
+\newcommand{\thread}{http://osu.ppy.sh/s/454806}
 \newcommand{\wincondition}{Score v1}
 
-% Team information
-\newboolean{team} %if the tournament is team-based
+%%% Team information
+\newboolean{team}                         % if the tournament is team-based
 \setboolean{team}{true}
-\newcommand{\teamsize}{4}   %number of players per team
+\newcommand{\teamsize}{4}                 % number of players per team
 \newcommand{\teamsizemin}{6}
 \newcommand{\teamsizemax}{8}
-\newcommand{\minplayers}{3} %minimum players for the match to proceed; comment to disable the rule
+\newcommand{\minplayers}{3}               % minimum players for the match to proceed; comment to disable the rule
 
-% Dates
+%%% Dates
 \newcommand{\regend}{1970-01-01}          % end date of registration
 \newcommand{\tournamentstart}{1970-01-01} % start date - I use ISO format here
 \newcommand{\tournamentend}{1970-01-01}   % end date
 
-% Entry restrictions
-%\newcommand{\minrank}{1337} 	%higher rank = lower number
-%\newcommand{\maxrank}{42} 	%comment/uncomment these to remove/add rank restrictions
+%%% Entry restrictions
+%\newcommand{\minrank}{1337} 	            % higher rank = lower number
+%\newcommand{\maxrank}{42} 	              % comment/uncomment these to remove/add rank restrictions
 \newboolean{national}
 \setboolean{national}{false}
-\newcommand{\country}{country}		%the country/countries this tournament is limited to
+\newcommand{\country}{country}		        % the country/countries this tournament is limited to
 \newboolean{nationalteams}
-\setboolean{nationalteams}{false}	%are teams limited to be of one country?
+\setboolean{nationalteams}{false}	        % are teams limited to be of one country?
 \newboolean{allowmixteams}
-\setboolean{allowmixteams}{false}	%allow 2-country teams
+\setboolean{allowmixteams}{false}	        % allow 2-country teams
 
-% Bracket information
+%%% Registration information              % if neither option is defined, form registration is assumed
+%%%                                       % if only template is defined, forum registration is assumed
+%\newcommand{\regtemplate}{}             % filename of textfile containing registration template
+%\newcommand{\pmregisterto}{}             % username of person to send registration pm to
+
+
+%%% Bracket information
 \newboolean{groupstage}
-\setboolean{groupstage}{true}		%set true to enable group stage
+\setboolean{groupstage}{true}		           % set true to enable group stage
 \newcommand{\groupsize}{4}
 \newboolean{doubleelim}
-\setboolean{doubleelim}{true}		%true for DE, false for SE
+\setboolean{doubleelim}{true}		           % true for DE, false for SE
 
-% group stage over 2 weeks
+%%% Group stage additional options
 \newboolean{splitgs}
-\setboolean{splitgs}{false}
+\setboolean{splitgs}{false}               % split group stage over 2 weeks
 
-%map pool info
+%%% Map pool info
 \newboolean{fullcustommappool}
-\setboolean{fullcustommappool}{false}
-\newcommand{\numnomod}{6}
-\newcommand{\nummod}{3}
-%\newcommand{\numfreemod}{3}
+\setboolean{fullcustommappool}{false}     % for using a completely different mappool structure
+\newcommand{\numnomod}{6}                 % number of nomod picks per map pool
+\newcommand{\nummod}{3}                   % number of maps for each mod pool
+%\newcommand{\numfreemod}{3}              % number of freemod picks, if left undefined same as the other mod pools
 
-%match related time windows
-\newcommand{\reschedulewindow}{24h}
-\newcommand{\lobbyopen}{5min}
-\newcommand{\maxlate}{10min}
-\newcommand{\picktime}{2min}
-\newcommand{\readytime}{1min}
+%%% Match related time windows
+\newcommand{\reschedulewindow}{24h}       % time window for rescheduling
+\newcommand{\lobbyopen}{5min}	            % time the lobby is opened before the map starts
+\newcommand{\maxlate}{10min}              % maximum time the map is postponed waiting for players
+\newcommand{\picktime}{2min}              % time to pick a map
+\newcommand{\readytime}{1min}             % time to ready up after picking
 
-% Warmup restrictions
-\newcommand{\maxwarmup}{5min}
-\newcommand{\groupstagewarmups}{2}
+%%% Warmup restrictions
+\newcommand{\maxwarmup}{5min}             % maximum length of warmup maps
+\newcommand{\groupstagewarmups}{2}        % number of warmups (total) in groupstage
 \newboolean{stricthost}
-\setboolean{stricthost}{true}
+\setboolean{stricthost}{true}             % if true, host is not given to players for picking warmups and warmups must be linked to ref
 
-% Ban & picking restrictions
+%%% Ban & picking restrictions
 \newcommand{\bans}{2}
-\newcommand{\groupstagebans}{2}
+\newcommand{\groupstagebans}{2}           % number of bans in the group stage
 \newboolean{restrictsamemod}
-\setboolean{restrictsamemod}{false} %if true, the same team may not pick the same mod twice on consecutive picks
+\setboolean{restrictsamemod}{false}       %if true, the same team may not pick the same mod twice on consecutive picks
+\newboolean{fmlessmods}
+\setboolean{fmlessmods}{false}            % 1 mod per team/ only picking player mod for freemod
 
-% Match lengths; copy the \item line and adjust numbers for what you need
+%%% Match lengths; copy the \item line and adjust numbers for what you need
 \newcommand{\matchlengths}{
 \begin{itemize}
 	\item Matches in the round-of-n are played best-of-m, meaning the first \ifthenelse{\boolean{team}}{team}{player} to win (m+1)/2 maps wins the match.
@@ -75,12 +83,13 @@
 \end{itemize}
 }
 
-% Custom rules for each section
+%%% Custom rules for each section
 \newcommand{\customreg}{}
 \newcommand{\customschedule}{}
 \newcommand{\custombracketpre}{}
 \newcommand{\custombracketpost}{}
 \newcommand{\custommappool}{}
+\newcommand{\custompick}{}
 
 
 % Ref checklist options

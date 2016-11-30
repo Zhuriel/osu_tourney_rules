@@ -1,11 +1,9 @@
 \title{\name{} Rules}
-\author{}
-
+\author{\host\\
+\footnotesize Template by Zhuriel}
 
 \begin{document}
 \maketitle
-
-%This document is intended to provide an easily customizable, clearly worded rule set for osu! tournaments. It is based primarily on the OWC rules, but I have attempted to give the rules better structure and clarifiy the wordings.
 
 \section{Administrative}
 
@@ -26,12 +24,15 @@ The tournament underlies the rules in this document, any changes of which will b
 
 The map selectors are not allowed to participate in the tournament as a player. Other staff members are not restricted from participating.
 
+\begin{samepage}
 \subsection{Registration}
 
-%%% a few examples, use what you need and adapt
-Registration is handled through the form linked on the \href{\thread}{tournament thread}.
-%To register, write a PM to (person) with the following template:
-%To register, respond to the tournament thread with the following template:
+\ifthenelse{\isundefined{\regtemplate}}{Registration is handled through the form linked on the \href{\thread}{tournament thread}.}{
+To register, \ifthenelse{\boolean{team}}{team captains}{players} must \ifthenelse{\isundefined{\pmregisterto}}{post on the \href{\thread}{tournament thread}}{send a PM to \pmregisterto} with the following template:
+
+\VerbatimInput[frame=single]{\regtemplate}
+}
+\end{samepage}
 
 The deadline for registrations is \regend.
 
@@ -128,11 +129,11 @@ If the match is behind schedule, the referee may decide to only allow one warmup
 \ifthenelse{\groupstagewarmups = 0}{In the group stage, no warmup maps may be played.}{}}{}
 
 \subsubsection{Bans}
-After both warmups have been played, each \ifthenelse{\boolean{team}}{team}{player} must ban 2 maps, preventing them from being picked during the entire match.
+After both warmups have been played, each \ifthenelse{\boolean{team}}{team}{player} must ban \bans map\ifthenelse{\bans = 1}{}{s}, preventing them from being picked during the entire match.
 
 The \ifthenelse{\boolean{team}}{teams}{players} take turns banning maps, starting with the winner of the \texttt{!roll}. Bans are made by \ifthenelse{\boolean{team}}{the team captains by }{}announcing the map to be banned to the referee.
-%%% optional - fewer bans in group stages
-%In the group stage, only one ban per \ifthenelse{\boolean{team}}{team}{player} is allowed.
+
+\ifthenelse{\groupstagebans = \bans}{}{In the group stage, each \ifthenelse{\boolean{team}}{team}{player} bans \groupstagebans map\ifthenelse{\groupstagebans = 1}{}{s}.}
 
 \subsubsection{Map Picks}
 The \ifthenelse{\boolean{team}}{team captains}{players} take turns picking maps. Maps are picked by announcing the map to the referee. The following restrictions as to which maps may be picked apply:
@@ -143,17 +144,16 @@ The \ifthenelse{\boolean{team}}{team captains}{players} take turns picking maps.
 	\item Any single map may only be picked once per match
 	\ifthenelse{\boolean{restrictsamemod}}{\item The same \ifthenelse{\boolean{team}}{team}{player} may not pick from the same mod pool twice in a row. The two \ifthenelse{\boolean{team}}{teams'}{players'} picks are independent of the other \ifthenelse{\boolean{team}}{team's}{player's} for this rule, meaning that if one \ifthenelse{\boolean{team}}{team}{player} picks from a mod pool, the other may immediately pick from the same pool. The nomod pool is exempt from this rule.}{}
 	\item The tiebreaker map can not be picked. It is picked by the referee in case of a tie at the last possible game.
+	\custompick
 \end{itemize}
 \end{samepage}
 
 The mods are set by the referee according to the mod pool that the picked map is in. Free mods is enabled for maps in the free mod pool and the tiebreaker.
 
 Allowed mods for free mod and tiebreaker are hidden or hard rock, as well as both \ifthenelse{\boolean{team}}{or none }{}of these two.
-%%% optional alternate rule to only require picking player to pick a mod
-\ifthenelse{\boolean{team}}{At least 2 players per team}{
-Each player
-%The player who picked the map
-}must play with at least one mod on free mod picks. This requirement does not apply to the tiebreaker.
+\ifthenelse{\boolean{team}}{At least \ifthenelse{\boolean{fmlessmods}}{1}{2} players per team}{
+\ifthenelse{\boolean{fmlessmods}}{The player who picked the map}{Each player}
+} must play with at least one mod on free mod picks. This requirement does not apply to the tiebreaker.
 
 \ifthenelse{\boolean{team}}{Players may be exchanged freely for each map pick.}{}
 
@@ -169,7 +169,7 @@ The referee stays in the lobby, but may not play the maps.
 
 \subsection{Lobby Behavior}
 
-Behavior during and between matches underlies the global osu! rules.
+Behavior during and between matches underlies the global osu! rules. Players are expected to be respectful to staff and to each other during matches.
 
 \begin{samepage}
 Additionally, the following rules are enforced by referees:
@@ -197,6 +197,5 @@ a map, the referee may allow a rematch subject to the following conditions:
 	\item Each \ifthenelse{\boolean{team}}{team}{player} may have a maximum of one rematch in their favor per match
 \end{itemize}
 \end{samepage}
-
 
 \end{document}

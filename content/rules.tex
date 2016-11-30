@@ -1,6 +1,6 @@
 \title{\name{} Rules}
-\author{Template by Zhuriel}
-\date{}
+\author{}
+
 
 \begin{document}
 \maketitle
@@ -9,7 +9,7 @@
 
 \section{Administrative}
 
-\name{} (\nameshort) is a \ifthenelse{\boolean{team}}{team}{player}-based \mode{} tournament hosted by \host. \ifthenelse{\boolean{team}}{It is played in teams of \teamsize}{}
+\name{} (\nameshort) is a \ifthenelse{\boolean{team}}{team}{player}-based \mode{} tournament hosted by \host. \ifthenelse{\boolean{team}}{It is played in teams of \teamsize{} players.}{}
 
 The tournament underlies the rules in this document, any changes of which will be announced.
 
@@ -37,15 +37,22 @@ The deadline for registrations is \regend.
 
 Any registrations after this date or by different means cannot be accepted.
 
+\customreg
+
 \subsection{Scheduling}
 
-The tournament runs from \tournamentstart{} to \tournamentend. All matches are played on weekends. The first two rounds are split into two groups for scheduling purposes and played over the first two weekends. For the later stages, all matches of one stage are played on the same weekend.
+The tournament runs from \tournamentstart{} to \tournamentend. All matches are played on weekends, with each stage of the tournament played on a single weekend\ifthenelse{\boolean{splitgs}}{, except for the group stage which is split over two weekends}.
 
-Detailed schedules with times for the individual matches will be announced the week before the corresponding stage is played.
+Detailed schedules with times for the individual matches will be announced on the monday of the week before the corresponding stage is played.
 
-Matches can be rescheduled if both players agree and a referee is available. Proof must be provided to the tournament management either in form of a screen shot or messages from both \ifthenelse{\boolean{team}}{teams}{players} at least 24h before the scheduled time of the match. If a \ifthenelse{\boolean{team}}{team}{player} does not respond to requests for rescheduling, the match may be rescheduled without the \ifthenelse{\boolean{team}}{team}{player}'s consent at the discretion of the tournament management.
+Matches can be rescheduled if both players agree and a referee is available. Proof must be provided to the tournament management either in form of a screen shot or messages from both \ifthenelse{\boolean{team}}{teams}{players} at least 24h before the scheduled time of the match.
+If a \ifthenelse{\boolean{team}}{team}{player} does not respond to requests for rescheduling, the match may be rescheduled without the \ifthenelse{\boolean{team}}{team}{player}'s consent at the discretion of the tournament management.
+
+\customschedule
 
 \section{Bracket}
+
+\custombracketpre
 
 \ifthenelse{\boolean{groupstage}}{\subsection{Group Stage}
 The tournament starts with a group stage in which the \ifthenelse{\boolean{team}}{teams}{players} are divided into groups of \groupsize. Each \ifthenelse{\boolean{team}}{team}{player} plays against each other \ifthenelse{\boolean{team}}{team}{player} on the group. Matches in the group stage are played best-of-5, meaning the first \ifthenelse{\boolean{team}}{team}{player} to win three maps wins the match.
@@ -73,16 +80,17 @@ Match lengths for each round are as follows:
 \matchlengths
 \end{samepage}
 
+\custombracketpost
+
 A detailed bracket including\ifthenelse{\boolean{groupstage}}{ group and}{} match assignments will be linked on the \href{\thread}{tournament thread}.
 
 \subsection{Map Pools}
 
-Each stage has its own map pool. Each mappool consists of \numnomod nomod maps, 3 each of hidden, hard rock, double time and free mod maps, as well as one tiebreaker map.
+\ifthenelse{\boolean{fullcustommappool}}{}{Each stage has its own map pool. Each mappool consists of \numnomod nomod maps, \nummod each of hidden, hard rock, double time \ifthenelse{\isundefined{\numfreemod}}{and }{maps, \numfreemod }free mod maps, as well as one tiebreaker map.}
 
+\custommappool
 
 The map pools are selected by the map selectors and announced a week before the corresponding stage is played, after the last regular scheduled match of the previous round is played.
-
-%Additionally, each round will include a special map pool containing maps focusing on niche skills. The detailed rules for this pool are still under consideration and will be announced when they are finalized.
 
 \section{Match Rules}
 
@@ -161,13 +169,13 @@ The referee stays in the lobby, but may not play the maps.
 
 \subsection{Lobby Behavior}
 
-Behavior during and between matches underlies the global osu! rules. If a player becomes unable to play multiplayer during a match due to a silence or restriction, \ifthenelse{\boolean{team}}{the team of that player must continue playing without them.}{that player forfeits the match.}
+Behavior during and between matches underlies the global osu! rules.
 
 \begin{samepage}
 Additionally, the following rules are enforced by referees:
 
 \begin{itemize}
-	\item No inappropriate warmup maps (see section \ref{sec:warmup})
+	\item No inappropriate warmup maps
 	\item No excessive delaying of the match
 	\item No intentional disconnects during maps
 \end{itemize}

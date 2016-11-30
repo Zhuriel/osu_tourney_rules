@@ -1,0 +1,77 @@
+%opening
+\title{\nameshort{} Referee Checklist}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Preparation}
+\begin{itemize}
+	\item Make sure you are familiar with the rules!
+	\item Download map pool (optionally create a collection for easier access)
+	\item Check the schedule and know your match times
+	\item Have map pool list ready
+	\item Get an accurate watch or other timer
+	\item Message \ifthenelse{\boolean{team}}{captains}{players} for warmup maps before creating the lobby
+\end{itemize}
+
+\section{Lobby Creation}
+
+\begin{itemize}
+	\item Create Lobby \lobbyopen in advance
+	\item Lobby Settings:
+	\input{content/lobbysettings}
+	\item Post \texttt{/mp/} link in \#referees channel with match number
+	\item Invite \ifthenelse{\boolean{team}}{captains}{players}
+	\item Make sure \ifthenelse{\boolean{team}}{teams}{players} are in the correct slots, in the order listed in the schedule
+\end{itemize}
+
+\section{Warmups}
+
+\begin{itemize}
+	\item Ask both \ifthenelse{\boolean{team}}{captains}{players} to roll
+	\item Enable free mods
+	\item \ifthenelse{\boolean{stricthost}}{Pick the warmup maps sent to you}{Give host to players for picking warmups}, starting with the winner of the roll
+	\item Start when players are ready; feel free to play too
+\end{itemize}
+
+\section{Bans}
+
+\begin{itemize}
+	\item Ask \ifthenelse{\boolean{team}}{captains}{players} for their bans, beginning with roll winner and alternating
+	\item Note down bans for each player
+	\item Report bans in \#referees channel with match number
+\end{itemize}
+
+\section{Map Picks}
+
+\begin{itemize}
+	\item Ask picking \ifthenelse{\boolean{team}}{captain}{player} for the map pick; do not give the players host
+	\item If a \ifthenelse{\boolean{team}}{team}{player} does not pick within \picktime, randomly select a map using \texttt{!roll}
+	\item Confirm validity of picked map (not banned or previously picked)
+	\item Pick map and set mods accordingly
+	\item Keep track of picks
+	\item Start when players are ready or after \readytime
+	\item Don't play
+	\item After map, announce match score and next picking \ifthenelse{\boolean{team}}{team}{player}
+\end{itemize}
+
+\section{Match End}
+
+\begin{itemize}
+	\item Match ends if one \ifthenelse{\boolean{team}}{team}{player} reaches the number of points needed to win in the current round, as noted in the rules
+	\item If there is a tie at one point less than the number of points required to win, pick the tiebreaker
+	\item After the match, post score in \#referees channel with match number
+\end{itemize}
+
+\section*{Notes}
+
+\begin{itemize}
+	\item Keep in mind you are responsible for keeping the tournament running smoothly and according to schedule
+	\item Having fun with friends is OK, but don't let it delay the match unnecessarily
+	\item If anything unexpected comes up or you don't know what to do, contact \refcontact
+\end{itemize}
+
+\end{document}

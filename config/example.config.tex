@@ -32,12 +32,18 @@
 
 % Bracket information
 \newboolean{groupstage}
-\setboolean{groupstage}{false}		%set true to enable group stage
+\setboolean{groupstage}{true}		%set true to enable group stage
 \newcommand{\groupsize}{4}
 \newboolean{doubleelim}
 \setboolean{doubleelim}{true}		%true for DE, false for SE
 
+% group stage over 2 weeks
+\newboolean{splitgs}
+\setboolean{splitgs}{false}
+
 %map pool info
+\newboolean{fullcustommappool}
+\setboolean{fullcustommappool}{false}
 \newcommand{\numnomod}{6}
 \newcommand{\nummod}{3}
 %\newcommand{\numfreemod}{3}
@@ -49,22 +55,33 @@
 \newcommand{\picktime}{2min}
 \newcommand{\readytime}{1min}
 
-%warmup restrictions
+% Warmup restrictions
 \newcommand{\maxwarmup}{5min}
 \newcommand{\groupstagewarmups}{2}
 \newboolean{stricthost}
 \setboolean{stricthost}{true}
 
-%ban & picking restrictions
+% Ban & picking restrictions
 \newcommand{\bans}{2}
 \newcommand{\groupstagebans}{2}
 \newboolean{restrictsamemod}
 \setboolean{restrictsamemod}{false} %if true, the same team may not pick the same mod twice on consecutive picks
 
-%match lengths; copy the \item line and adjust numbers for what you need
+% Match lengths; copy the \item line and adjust numbers for what you need
 \newcommand{\matchlengths}{
 \begin{itemize}
 	\item Matches in the round-of-n are played best-of-m, meaning the first \ifthenelse{\boolean{team}}{team}{player} to win (m+1)/2 maps wins the match.
 
 \end{itemize}
 }
+
+% Custom rules for each section
+\newcommand{\customreg}{}
+\newcommand{\customschedule}{}
+\newcommand{\custombracketpre}{}
+\newcommand{\custombracketpost}{}
+\newcommand{\custommappool}{}
+
+
+% Ref checklist options
+\newcommand{\refcontact}{\host}

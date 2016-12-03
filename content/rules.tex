@@ -7,7 +7,7 @@
 
 \section{Administrative}
 
-\name{} (\nameshort) is a \ifthenelse{\boolean{team}}{team}{player}-based \mode{} tournament hosted by \host. \ifthenelse{\boolean{team}}{It is played in teams of \teamsize{} players.}{}
+\name{} (\nameshort) is a \ifthenelse{\boolean{team}}{team}{player}-based \mode{} tournament hosted by \host. \ifthenelse{\boolean{team}}{It is played in teams of \teamsize{} players.}{} \ifthenelse{\boolean{scorev2}}{The tournament is played using score V2.}{}
 
 The tournament underlies the rules in this document, any changes of which will be announced.
 
@@ -94,6 +94,8 @@ A detailed bracket including\ifthenelse{\boolean{groupstage}}{ group and}{} matc
 The map pools are selected by the map selectors and announced a week before the corresponding stage is played, after the last regular scheduled match of the previous round is played.
 
 \section{Match Rules}
+
+Players are responsible for their own equipment, software and connection. If any of these prevent a player from playing a match at the scheduled time and the match is not properly rescheduled, it is considered a forfeit.\ifthenelse{\boolean{scorev2}}{Additionally, as this tournament is played on score V2, players can not use the fallback release stream to play their matches}{}
 
 \subsection{Match Procedures}
 

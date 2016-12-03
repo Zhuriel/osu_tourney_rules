@@ -2,9 +2,11 @@
 \newcommand{\name}{Example Tournament}    % name of the tournament
 \newcommand{\nameshort}{ET}               % abbreviation (used in the lobby names)
 \newcommand{\mode}{osu!}                  % gamemode of the tournament
-\newcommand{\host}{Example Host}
-\newcommand{\thread}{http://osu.ppy.sh/s/454806}
-\newcommand{\wincondition}{Score v1}
+\newcommand{\host}{Example Host}          % name of the host of the tournament
+\newcommand{\thread}{http://osu.ppy.sh/s/454806} % link to the tournament thread
+\newboolean{scorev2}
+\setboolean{scorev2}{false}								% if the tournament is played using scorev2
+\newcommand{\wincondition}{\ifthenelse{scorev2}{Score V2}{Score V1}} % adapt this if you want to use a different win condition
 
 %%% Team information
 \newboolean{team}                         % if the tournament is team-based

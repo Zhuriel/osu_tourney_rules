@@ -4,10 +4,6 @@ PDFS = rules.$(RULESCONFIG).pdf\
 
 all: $(PDFS)
 
-clean:
-	rm *.aux *.log *.out *.tex
-	rm */*.aux
-
 %.pdf: %.tex
 	pdflatex $<
 	pdflatex $<
@@ -17,4 +13,7 @@ clean:
 	echo "\\include{config/$(RULESCONFIG).config}" >> $@
 	echo "\\include{content/$*}" >> $@
 
-.PRECIOUS: %.$(RULESCONFIG).tex
+.PHONY: clean
+clean:
+	-rm *.aux *.log *.out *.tex
+	-rm */*.aux

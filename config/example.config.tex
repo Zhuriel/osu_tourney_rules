@@ -6,7 +6,8 @@
 \newcommand{\thread}{http://osu.ppy.sh/s/454806} % link to the tournament thread
 \newboolean{scorev2}
 \setboolean{scorev2}{false}								% if the tournament is played using scorev2
-\newcommand{\wincondition}{\ifthenelse{scorev2}{Score V2}{Score V1}} % adapt this if you want to use a different win condition
+\newcommand{\wincondition}{\ifthenelse{\boolean{scorev2}}{Score V2}{Score V1}} % adapt this if you want to use a different win condition
+\newcommand{\numparticipants}{32}         % the number of players/teams. wordings like "32 or 64" also work
 
 %%% Team information
 \newboolean{team}                         % if the tournament is team-based
